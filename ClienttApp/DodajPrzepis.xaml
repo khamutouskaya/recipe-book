@@ -1,0 +1,90 @@
+﻿<Window x:Class="ClienttApp.DodajPrzepis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienttApp"
+        mc:Ignorable="d"
+        Title="DodajPrzepis" Height="450" Width="800"
+        Background="Lavender">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Nazwa przepisu -->
+            <RowDefinition Height="Auto"/>
+            <!-- Skladniki label -->
+            <RowDefinition Height="2*"/>
+            <!-- Lista skladnikow -->
+            <RowDefinition Height="Auto"/>
+            <!-- Dodaj skladnik -->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <!-- Opis przepisu -->
+            <RowDefinition Height="*"/>
+            <!-- Pole opisu -->
+        </Grid.RowDefinitions>
+
+        <!-- Nazwa przepisu -->
+        <TextBlock Grid.Row="0" Grid.Column="0" 
+                   Text="Nazwa przepisu:" 
+                   FontSize="16" FontWeight="SemiBold"
+                   VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="0" Grid.Column="1"
+                 FontSize="16" FontWeight="Bold"
+                 Background="WhiteSmoke"
+                 Margin="5"
+                 x:Name="txtNazwaPrzepisu"
+                 HorizontalAlignment="Stretch"/>
+
+        <!-- Skladniki label -->
+        <TextBlock Grid.Row="1" Grid.Column="0" 
+                   Text="Składniki:" 
+                   FontSize="16" FontWeight="SemiBold"
+                   VerticalAlignment="Top" Margin="5"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" 
+           Text=""  x:Name="txtBJU"
+           FontSize="14" FontWeight="SemiBold"
+           VerticalAlignment="Top" Margin="5"/>
+
+        <!-- Lista składników -->
+        <ScrollViewer Margin="5" Grid.Row="2" Grid.Column="1"  Background="WhiteSmoke" VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <Button Height="20" Width="20" Click="ButtonAddIngridient_Click">+</Button>
+                    <Button x:Name="BtnDeleteIngridient" Height="20" Width="20" Margin="5 0 0 0" Click="BtnDeleteIngridient_Click">-</Button>
+                </StackPanel>
+                <ListBox x:Name="ListIngridients" SelectionMode="Single" SelectionChanged="ListIngridients_SelectionChanged">
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Opis przepisu label -->
+        <TextBlock Grid.Row="4" Grid.Column="0" 
+                   Text="Opis przepisu:" 
+                   FontSize="16" FontWeight="SemiBold"
+                   VerticalAlignment="Top" Margin="5"/>
+
+        <!-- Pole opisu -->
+        <TextBox Grid.Row="5" Grid.Column="1"
+                 FontSize="16" FontWeight="Bold"
+                 Background="WhiteSmoke"
+                 Margin="5"
+                 x:Name="txtOpis"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Auto"
+                 Height="120"/>
+        <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+            <Button x:Name="btnZapisz" Content="Zapisz" Width="120" Height="32" Margin="0,5,10,5" Background="#FFD1B9FF" Click="BtnZapisz_Click"/>
+            <Button x:Name="btnAnuluj" Content="Anuluj" Width="120" Height="32" Margin="0,5,10,5" Background="#FFD1B9FF" Click="btnAnuluj_Click"/>
+            <Button x:Name="btnDelete" Content="Delete" Width="120" Height="32" Margin="0,5,10,5" Background="#FFD1B9FF" Visibility="Hidden" Click="btnDelete_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

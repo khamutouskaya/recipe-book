@@ -1,0 +1,34 @@
+﻿<Window x:Class="ClienttApp.Przepisy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienttApp"
+        mc:Ignorable="d"
+        Title="Przepisy" Height="450" Width="800"
+        Background="Lavender">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <Button Click="OnBack" Margin="5 5 5 0">Back</Button>
+            <Button Click="OnAdd" Margin="5 5 5 0">Add</Button>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
+
+            <StackPanel Margin="20" HorizontalAlignment="Center" Width="700">
+                <TextBlock x:Name="TextName" FontSize="22" FontWeight="Bold" Margin="0,0,0,20" Text="Name" HorizontalAlignment="Center"/>
+                <StackPanel x:Name="stackContent" HorizontalAlignment="Center" Width="700">
+                    
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+
+</Window>

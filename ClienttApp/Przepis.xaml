@@ -1,0 +1,97 @@
+﻿<Window x:Class="ClienttApp.Przepis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienttApp"
+        mc:Ignorable="d"
+        Title="Przepis" Height="450" Width="800"
+        Background="Lavender">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="10" Height="400" Width="750">
+
+            <!-- Кнопка Назад -->
+            <Button Content="← Wroc"
+                    FontSize="20" 
+                    FontWeight="Bold"
+                    Width="100"
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Left"
+                    Background="#FFC5AAD2"
+                    Click="BackButton_Click"
+                    x:Name="txtWroc"/>
+            
+            <TextBlock Text="{Binding Name}"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Width="524"
+                       Background="WhiteSmoke"
+                       Margin="10"
+                       x:Name="txtNazwa"/>
+
+    
+            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="8" Padding="10" Background="White" Height="102">
+                <StackPanel>
+                    <TextBlock Text="Skladniki: " FontSize="18"  FontWeight="SemiBold" Height="20"/>
+                    <ItemsControl ItemsSource="{Binding Ingridients}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="• {Binding Product.Name} - {Binding Count} {Binding Product.MetricType.Name}" 
+                                           FontSize="16" 
+                                           Margin="0,3,0,0"
+                                           x:Name="txtSkladniki"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+
+            <!-- 🔹 Блок Ингредиенты -->
+
+            <!-- 🔹 Блок Способ приготовления -->
+            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,10,0,15" Background="White">
+                <StackPanel>
+                    <TextBlock FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"><Run Text="Przygotowanie krok po kroku"/><Run Language="pl-pl" Text=":"/></TextBlock>
+                    <TextBlock Text="{Binding Description}"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               Foreground="Gray" Height="48"
+                               x:Name="txtPrzygotowanie"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 🔹 Блок КБЖУ -->
+            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,15" Background="White">
+                <StackPanel>
+                    <TextBlock 
+                               FontSize="18" FontWeight="SemiBold"><Run Language="pl-pl" Text="Cały przepis ma:"/></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <TextBlock Text="kkal" FontWeight="Bold" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding TotalCalories}" Width="46" x:Name="txtKkal"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                            <TextBlock Text="białka" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding TotalProteins}" x:Name="txtBialka"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                            <TextBlock Text="tluszczu" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding TotalFats}" x:Name="txtTluszcz"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                            <TextBlock Text="węgli" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding TotalCarbs}" x:Name="txtWegli"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

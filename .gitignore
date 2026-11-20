@@ -1,0 +1,16 @@
+# Visual Studio / .NET build output
+.vs/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+packages/
+*.user
+*.suo
+*.cache
+*.log
+
+# Old unused client prototype (not part of the solution)
+/ClientApp/
